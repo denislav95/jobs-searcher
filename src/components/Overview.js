@@ -10,7 +10,7 @@ class Overview extends Component {
         const keys = convertObjToArr(this.props.overview)
             .keys
             .filter(x => x.indexOf('overview') === -1 && x.indexOf('currentQuestion') === -1)
-        console.log(overview)
+
         return (
             <ul>
                 {overview.map((x, index) => {
