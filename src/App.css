@@ -2,7 +2,7 @@ body {
     background-image: url("https://i.pinimg.com/originals/c5/b8/f2/c5b8f2fb9d1cee516d5e3d1dd56ab5af.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .App {
