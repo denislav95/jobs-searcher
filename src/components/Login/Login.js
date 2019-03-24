@@ -27,7 +27,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="welcome-question register">
+            <div className="welcome-question login">
                 <h4>Login</h4>
                 <form onSubmit={this.login}>
                     <div class="input-group flex-nowrap">

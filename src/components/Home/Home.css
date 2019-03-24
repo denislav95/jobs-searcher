@@ -1,7 +1,15 @@
+.wrapper {
+    display: block;
+    padding: 10vh 0;
+    /*vertical-align: middle;*/
+    /*margin: 0 auto;*/
+    /*color: #fff;*/
+}
+
 .welcome-question {
-    display: table-cell;
-    vertical-align: middle;
-    margin: 0 auto;
+    /*display: table-cell;*/
+    /*vertical-align: middle;*/
+    /*margin: 0 auto;*/
     color: #fff;
 }
 
@@ -11,4 +19,51 @@
 
 .welcome-question .btn {
     margin: 7px 5px;
+}
+
+.bs-stepper-circle {
+    background-color: #007bff;
+}
+
+.bs-stepper-header {
+    margin-bottom: 40px;
+}
+
+.bs-stepper-label {
+    color: white;
+}
+
+.line {
+    background-color: white !important;
+}
+
+.step-trigger.active {
+    /*border: 1px solid white;*/
+    opacity: 0.7;
+    animation-name: color;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes color {
+    0% {
+        background-color: rgb(0, 60, 255);
+    }
+    50% {
+        background-color: rgb(0, 120, 255);
+    }
+    100% {
+        background-color: rgb(0, 60, 255);
+    }
+}
+
+.stepper-navigation {
+    margin-bottom: 10vh;
+}
+
+.stepper-navigation .btn {
+    opacity: 0.7;
+    animation-name: color;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
 }
