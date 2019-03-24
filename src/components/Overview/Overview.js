@@ -7,12 +7,6 @@ class Overview extends Component {
 
     renderOverview = () => {
 
-        console.log("============================")
-        console.log(convertObjToArr(this.props.overview).values)
-        console.log("============================")
-        console.log(convertObjToArr(this.props.overview).keys)
-        console.log("============================")
-
         const overview = convertObjToArr(this.props.overview)
             .values
             .filter(x => x.indexOf('Overview') === -1 && x.indexOf(false) === -1 && x[0] !== null)
@@ -30,7 +24,7 @@ class Overview extends Component {
                                 <a href="#"
                                    className="list-group-item  list-group-item-action py-2">
                                     {title}
-                                    <i class="far fa-edit float-right" onClick={() => this.props.editQuestion(title)}></i>
+                                    <i className="far fa-edit float-right" onClick={() => this.props.editQuestion(title)}></i>
                                 </a>
                                 <div className="list-group nested">
                                     {x[0].map((y, index2) =>
@@ -46,7 +40,7 @@ class Overview extends Component {
                                onClick={() => this.props.editQuestion(title)}
                                className="list-group-item list-group-item-action py-2">
                                 {title}
-                                <i class="far fa-edit float-right" onClick={() => this.props.editQuestion(title)}></i>
+                                <i className="far fa-edit float-right" onClick={() => this.props.editQuestion(title)}></i>
                             </a>
                             <div className="list-group nested">
                                 <a key={index} href="#"

@@ -30,19 +30,19 @@ class Login extends Component {
             <div className="welcome-question register">
                 <h4>Login</h4>
                 <form onSubmit={this.login}>
-                    <div class="input-group flex-nowrap">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="addon-wrapping"><i class="far fa-envelope"></i></span>
+                    <div className="input-group flex-nowrap">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="addon-wrapping"><i className="far fa-envelope"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Email"
+                        <input type="text" className="form-control" placeholder="Email"
                                aria-label="Email" aria-describedby="addon-wrapping"
                         value={this.state.email} onChange={this.onChange} name="email"/>
                     </div>
-                    <div class="input-group flex-nowrap">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="addon-wrapping"><i class="fas fa-unlock-alt"></i></span>
+                    <div className="input-group flex-nowrap">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text" id="addon-wrapping"><i className="fas fa-unlock-alt"></i></span>
                         </div>
-                        <input type="password" class="form-control" placeholder="Password"
+                        <input type="password" className="form-control" placeholder="Password"
                                aria-label="Password" aria-describedby="addon-wrapping"
                                value={this.state.password} onChange={this.onChange} name="password"/>
                     </div>
