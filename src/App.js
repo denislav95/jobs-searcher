@@ -4,6 +4,8 @@ import Home from './components/Home/Home';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import Nav from './components/Nav/Nav';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import './App.css';
 
@@ -20,6 +22,7 @@ class App extends Component {
                         <Route path="/register" component={Register}/>
                     </div>
                 </div>
+                <ToastContainer />
             </Router>
         );
     }

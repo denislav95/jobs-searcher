@@ -10,13 +10,17 @@ class Nav extends Component {
     }
 
     componentDidMount() {
-        // helper.logout();
         helper.checkUserLogged((isLoggedIn) => {
             if (isLoggedIn) {
-                this.setState({loggedIn: true});
+                this.setState({loggedIn: true})
 
             }
         })
+    }
+
+    logout = () => {
+        helper.logout();
+        this.setState({loggedIn: false})
     }
 
     render() {
@@ -25,7 +29,7 @@ class Nav extends Component {
                 <nav className="navbar navbar-light bg-light justify-content-between">
                     <Link to="/"><span className="navbar-brand">Job Tinder</span></Link>
                     <div className="my-2 my-lg-0">
-                        <Link to="/"><button className="btn btn-outline-primary" type="button">Log Out</button></Link>
+                        <Link to="/"><button className="btn btn-outline-primary" type="button" onClick={this.logout}>Log Out</button></Link>
                     </div>
                 </nav>
             );

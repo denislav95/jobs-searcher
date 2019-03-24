@@ -2,44 +2,40 @@ import * as firebase from "firebase";
 
 import FirebaseConfig from "../config/firebase";
 
+import { toast } from 'react-toastify';
+
 firebase.initializeApp(FirebaseConfig);
-//
-// const databaseRef = firebase.database().ref();
-// export const usersRef = databaseRef.child("users");
 
 export const register = (user) => {
     firebase.auth()
         .createUserWithEmailAndPassword(user.email, user.password)
         .then(u => {
-            alert('Registration successful!')
+            toast('Registration successful!', { type: toast.TYPE.SUCCESS })
         })
         .catch(error => {
-            alert(error.message);
-        });
-
+            toast(error.message, { type: toast.TYPE.ERROR })
+        })
 }
 
 export const login = (user) => {
     firebase.auth()
         .signInWithEmailAndPassword(user.email, user.password)
         .then(u => {
-            const loggedUser = { email: u.user.email };
-            localStorage.setItem('user', JSON.stringify(loggedUser));
-            alert('Login successful!')
+            const loggedUser = { email: u.user.email }
+            localStorage.setItem('user', JSON.stringify(loggedUser))
+            toast('Login successful!', { type: toast.TYPE.SUCCESS })
         })
         .catch(function(error) {
-            alert(error.message)
-    });
+            toast(error.message, { type: toast.TYPE.ERROR })
+    })
 }
 
 export const checkUserLogged = (callback) => {
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            // User is signed in.
             return callback(true)
         } else {
-            // No user is signed in.
             return callback(false)
         }
     });
@@ -47,12 +43,10 @@ export const checkUserLogged = (callback) => {
 
 export const logout = () => {
     firebase.auth().signOut().then(() => {
-        // Sign-out successful.
-        alert('Logout successful!')
+        toast('Logout successful!', { type: toast.TYPE.SUCCESS })
     }).catch(function(error) {
-        // An error happened.
-        alert('Logout unsuccessful!')
-    });
+        toast(error.message, { type: toast.TYPE.ERROR })
+    })
 }
 
-export default { register, login, checkUserLogged, logout };
+export default { register, login, checkUserLogged, logout }

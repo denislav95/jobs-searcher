@@ -81,8 +81,6 @@ class Home extends Component {
     }
 
     editQuestion = (question) => {
-        console.log(question)
-        console.log("===============================")
         this.setState({currentQuestion: question, isEditing: true})
     }
 
@@ -100,9 +98,6 @@ class Home extends Component {
     }
 
     checkIfActive = (element) => {
-        console.log(element)
-        console.log("============================")
-        console.log(this.state.currentQuestion)
         return this.state.currentQuestion === element ? 'active' : ''
     }
 
