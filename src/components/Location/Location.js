@@ -1,9 +1,8 @@
 import React, {createRef, Component} from 'react';
 import {render} from 'react-dom'
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
-import config from '../config';
 
-const GOOGLE_MAPS_URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+import './Location.css';
 
 class Location extends Component {
 

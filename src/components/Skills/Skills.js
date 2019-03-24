@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import skills from '../languages'
+import skills from '../../languages'
+import './Skills.css';
 
 class Skills extends Component {
     render() {
