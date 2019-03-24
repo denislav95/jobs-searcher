@@ -12,10 +12,6 @@ class Register extends Component {
         confirm_password: '',
     }
 
-    componentDidMount() {
-        // login({email: 'a.terziev1415@gmail.com'})
-    }
-
     onChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
     }

@@ -10,9 +10,6 @@ class Login extends Component {
         password: '',
     }
 
-    componentDidMount() {
-    }
-
     onChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
     }
