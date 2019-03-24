@@ -1,28 +1,51 @@
+body {
+    background-image: url("https://i.pinimg.com/originals/c5/b8/f2/c5b8f2fb9d1cee516d5e3d1dd56ab5af.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
 .App {
-  text-align: center;
-  height: 100vh;
-  display: table;
-  width: 100%;
+    text-align: center;
+    height: 100vh;
+    display: table;
+    width: 100%;
 }
 
 .welcome-question {
-  display: table-cell;
-  vertical-align: middle;
-  margin: 0 auto;
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0 auto;
+    color: #fff;
 }
 
-.welcome-question p{
-  margin-top: 0;
+.welcome-question h4 {
+    margin-top: 0;
 }
 
-.skills button.selected{
-  background-color: #007bff;
-  border-color: #007bff;
-  color: #fff;
+.welcome-question .btn {
+    margin: 7px 5px;
+}
+
+.skills button.selected {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
 }
 
 .leaflet-container {
-  height: 500px;
-  width: 500px;
-  margin: 0 auto;
+    height: 50vh;
+    width: 60vw;
+    margin: 0 auto;
+    border-radius: 3px;
+    opacity: 0.9;
 }
+
+.navbar {
+    padding: 7px 40px;
+}
+
+.navbar .btn {
+    margin: 0 11px;
+}
+

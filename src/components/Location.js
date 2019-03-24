@@ -52,10 +52,10 @@ class Location extends Component {
         setTimeout(this.initMap, 100);
         return (
             <div className="welcome-question location">
-                <p>Where do you want to work ?</p>
+                <h4>Where do you want to work ?</h4>
                 <button
                     data-location={this.state.latlng}
-                    className="btn btn-success"
+                    className="btn btn-primary"
                     value="location"
                     onClick={this.props.handleClick}>
                     Submit

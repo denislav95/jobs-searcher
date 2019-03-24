@@ -5,11 +5,11 @@ class Skills extends Component {
     render() {
         return (
             <div className="welcome-question skills">
-                <p>What technologies do you know ?</p>
+                <h4>What technologies do you know ?</h4>
                 {skills.map((x, index) =>
                     <button type="button"
                             className={this.props.addSkillsClass(x) +
-                            " btn btn-outline-primary"}
+                            " btn btn-outline-light"}
                             onClick={this.props.onSelectSkill}
                             value={x}
                             key={index}>{x}
@@ -17,7 +17,7 @@ class Skills extends Component {
                 }
                 <br/>
                 <button
-                    className="btn btn-success"
+                    className="btn btn-primary"
                     value="skills"
                     onClick={this.props.handleClick}>
                     Submit

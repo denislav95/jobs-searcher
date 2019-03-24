@@ -6,18 +6,23 @@ import Experience from './components/Experience';
 import Salary from './components/Salary';
 import Location from './components/Location';
 import Availability from './components/Availability';
-import Overview from './components/Overview';
+import Overview from './components/Overview/Overview';
+import Register from './components/Register/Register';
+import Nav from './components/Nav';
 
 class App extends Component {
 
     state = {
-        currentQuestion: 'Experience',
+        isEditing: false,
+        // currentQuestion: 'Experience',
+        currentQuestion: 'Register',
         experience: null,
         skills: [],
         salary: null,
         location: null,
         availability: null,
         overview: null,
+        register: null
     };
 
     handleClick = (event) => {
@@ -26,7 +31,8 @@ class App extends Component {
         if (value === 'location') this.setState({[value]: event.target.attributes['data-location'].value}, () => console.log(this.state))
         let nextIndex = Object.keys(this.state).indexOf(value) + 1
         let nextQuestion = Object.keys(this.state)[nextIndex].capitalizeFirstLetter()
-        this.setState({currentQuestion: nextQuestion})
+        if(this.state.isEditing) nextQuestion = 'Overview';
+        this.setState({currentQuestion: nextQuestion, isEditing: false})
     }
 
     renderQuestions = () => {
@@ -68,13 +74,31 @@ class App extends Component {
         return <Availability handleClick={this.handleClick}/>
     }
 
-    renderOverview() {
-        return <Overview overview={this.state}/>
+    editQuestion = (question) => {
+        console.log(question)
+        console.log("===============================")
+        this.setState({currentQuestion: question, isEditing: true})
     }
+
+    renderOverview() {
+        return <Overview
+            overview={this.state}
+            editQuestion={this.editQuestion}
+            handleClick={this.handleClick}
+        />
+    }
+
+    renderRegister() {
+        return <Register register={this.register}/>
+    }
+
     render() {
         return (
-            <div className="App">
-                {this.renderQuestions()}
+            <div id="root">
+                <Nav/>
+                <div className="App">
+                    {this.renderQuestions()}
+                </div>
             </div>
         );
     }

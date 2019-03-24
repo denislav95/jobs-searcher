@@ -4,9 +4,9 @@ class Availability extends Component {
     render() {
         return (
             <div className="welcome-question availability">
-                <p>What is your availability ?</p>
-                <button onClick={this.props.handleClick} className="btn btn-outline-primary" value="availability">Full time</button>
-                <button onClick={this.props.handleClick} className="btn btn-outline-primary" value="availability">Part time</button>
+                <h4>What is your availability ?</h4>
+                <button onClick={this.props.handleClick} className="btn btn-outline-light" value="availability">Full time</button>
+                <button onClick={this.props.handleClick} className="btn btn-outline-light" value="availability">Part time</button>
             </div>
         );
     }
