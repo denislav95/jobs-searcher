@@ -5,7 +5,10 @@ import Salary from '../Salary/Salary';
 import Location from '../Location/Location';
 import Availability from '../Availability/Availability';
 import Overview from '../Overview/Overview';
+import Spinner from '../Spinner/Spinner';
 import  { Redirect } from 'react-router-dom'
+import {getCurrentUser} from "../../services/firebase";
+import {toast} from 'react-toastify';
 
 import '../../utlis/helpers';
 
@@ -21,8 +24,19 @@ class Home extends Component {
         location: null,
         availability: null,
         overview: null,
-        register: null
+        register: null,
+        user: null,
+        isLoading: true
     };
+
+    componentDidMount() {
+        getCurrentUser()
+            .then(user => this.setState({user, isLoading: false}))
+            .catch(error => {
+                this.setState({isLoading: false})
+                toast(error.message, {type: toast.TYPE.ERROR})
+            })
+    }
 
     handleClick = (event) => {
         const value = event.target.value;
@@ -187,7 +201,20 @@ class Home extends Component {
         )
     }
 
+    renderHomeLogged = () => {
+        return (
+            <div className="wrapper">
+                <h1>Welcome {this.state.user.name}</h1>
+            </div>
+        )
+    }
+
     render() {
+
+        if(this.state.isLoading) return <Spinner isLoading={this.state.isLoading}/>
+
+        if(this.state.user) return this.renderHomeLogged()
+
         return (
             <div className="wrapper">
                 <div className="stepper-navigation">

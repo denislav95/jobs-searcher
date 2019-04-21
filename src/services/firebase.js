@@ -9,7 +9,7 @@ export const register = (user) => {
         firebase.auth()
             .createUserWithEmailAndPassword(user.email, user.password)
             .then(response => {
-                writeUserData(response.user.uid, user.email, user.data)
+                writeUserData(response.user.uid, user)
                     .then(res => {
                         return resolve(res)
                     })
@@ -40,15 +40,38 @@ export const checkUserLogged = () => {
     })
 }
 
+export const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                const jobDataRef = firebase.database().ref('job_data/' + user.uid);
+                jobDataRef.on('value', function(snapshot) {
+                    const job_data = snapshot.val()
+                    return resolve({
+                        ...user,
+                        name: job_data.name,
+                        job_data: job_data.data
+                    })
+                });
+
+            } else {
+                return resolve(null)
+            }
+        });
+    })
+}
+
+
 export const logout = () => {
     return firebase.auth().signOut()
 }
 
-function writeUserData(userId, email, data) {
+function writeUserData(userId, user) {
     return firebase.database().ref('job_data/' + userId).set({
-        email: email,
-        data: data || []
+        email: user.email,
+        name: user.name,
+        data: user.data || []
     });
 }
 
-export default {register, login, checkUserLogged, logout}
+export default {register, login, checkUserLogged, logout, getCurrentUser}

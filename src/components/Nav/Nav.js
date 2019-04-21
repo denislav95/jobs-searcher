@@ -1,29 +1,17 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import './Nav.css';
-import helper from "../../services/firebase";
+import {logout} from "../../services/firebase";
 import {toast} from 'react-toastify';
 
 class Nav extends Component {
 
-    state = {
-        loggedIn: false
-    }
-
-    componentDidMount() {
-        helper.checkUserLogged()
-            .then((isLoggedIn) => {
-                if (isLoggedIn) {
-                    this.setState({loggedIn: true})
-                }
-            })
-    }
-
     logout = () => {
-        helper.logout()
+        logout()
             .then(() => {
-                toast('Logout successful!', {type: toast.TYPE.SUCCESS})
-                this.setState({loggedIn: false})
+                // toast('Logout successful!', {type: toast.TYPE.SUCCESS})
+                // this.setState({loggedIn: false})
+                window.location.reload();
             })
             .catch(function (error) {
                 toast(error.message, {type: toast.TYPE.ERROR})
@@ -31,7 +19,7 @@ class Nav extends Component {
     }
 
     render() {
-        if (this.state.loggedIn) {
+        if (this.props.loggedIn) {
             return (
                 <nav className="navbar navbar-light bg-light justify-content-between">
                     <Link to="/"><span className="navbar-brand">Job Tinder</span></Link>

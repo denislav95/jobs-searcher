@@ -17,6 +17,7 @@ class Login extends Component {
 
     login = (e) => {
         e.preventDefault();
+
         login({
             email: this.state.email,
             password: this.state.password
@@ -24,7 +25,8 @@ class Login extends Component {
             const loggedUser = {email: u.user.email}
             localStorage.setItem('user', JSON.stringify(loggedUser))
             toast('Login successful!', { type: toast.TYPE.SUCCESS })
-            return this.props.history.push("/")
+            this.props.history.push('/')
+            window.location.reload();
         }).catch(function (error) {
             toast(error.message, { type: toast.TYPE.ERROR })
         })
