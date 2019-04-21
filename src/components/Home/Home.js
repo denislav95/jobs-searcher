@@ -5,7 +5,7 @@ import Salary from '../Salary/Salary';
 import Location from '../Location/Location';
 import Availability from '../Availability/Availability';
 import Overview from '../Overview/Overview';
-import Register from '../Register/Register';
+import  { Redirect } from 'react-router-dom'
 
 import '../../utlis/helpers';
 
@@ -44,7 +44,9 @@ class Home extends Component {
 
     onSelectSkill = (e) => {
         let _skills = this.state.skills;
-        _skills.push(e.target.value)
+        let skill_exists = _skills.indexOf(e.target.value)
+        if(skill_exists !== -1) _skills.splice(skill_exists, 1)
+        else _skills.push(e.target.value)
         console.log(_skills)
         this.setState({skills: _skills})
     }
@@ -94,7 +96,10 @@ class Home extends Component {
     }
 
     renderRegister() {
-        return <Register register={this.register}/>
+        return <Redirect to={{
+            pathname: '/register',
+            data: this.state
+        }} />
     }
 
     checkIfActive = (element) => {

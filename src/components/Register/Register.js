@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {register} from '../../services/firebase';
+import {register, saveUserData} from '../../services/firebase';
+import {toast} from 'react-toastify';
 
 import './Register.css'
 
@@ -21,7 +22,13 @@ class Register extends Component {
         register({
             name: this.state.name,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            data: this.props.location.data
+        }).then(() => {
+            toast('Registration successful!', {type: toast.TYPE.SUCCESS})
+            return this.props.history.push("/profile")
+        }).catch(error => {
+            toast(error.message, {type: toast.TYPE.ERROR})
         })
     }
 
@@ -32,7 +39,8 @@ class Register extends Component {
                 <form onSubmit={this.register}>
                     <div className="input-group flex-nowrap">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="addon-wrapping"><i className="fas fa-user-circle"></i></span>
+                            <span className="input-group-text" id="addon-wrapping"><i
+                                className="fas fa-user-circle"></i></span>
                         </div>
                         <input type="text" className="form-control" placeholder="Your Name"
                                aria-label="Your Name" aria-describedby="addon-wrapping"
@@ -40,11 +48,12 @@ class Register extends Component {
                     </div>
                     <div className="input-group flex-nowrap">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="addon-wrapping"><i className="far fa-envelope"></i></span>
+                            <span className="input-group-text" id="addon-wrapping"><i
+                                className="far fa-envelope"></i></span>
                         </div>
                         <input type="text" className="form-control" placeholder="Email"
                                aria-label="Email" aria-describedby="addon-wrapping"
-                        value={this.state.email} onChange={this.onChange} name="email"/>
+                               value={this.state.email} onChange={this.onChange} name="email"/>
                     </div>
                     <div className="input-group flex-nowrap">
                         <div className="input-group-prepend">

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {login} from '../../services/firebase';
+import {toast} from 'react-toastify';
 
 import './Login.css'
 
@@ -19,6 +20,13 @@ class Login extends Component {
         login({
             email: this.state.email,
             password: this.state.password
+        }).then(u => {
+            const loggedUser = {email: u.user.email}
+            localStorage.setItem('user', JSON.stringify(loggedUser))
+            toast('Login successful!', { type: toast.TYPE.SUCCESS })
+            return this.props.history.push("/")
+        }).catch(function (error) {
+            toast(error.message, { type: toast.TYPE.ERROR })
         })
     }
 
@@ -29,11 +37,12 @@ class Login extends Component {
                 <form onSubmit={this.login}>
                     <div className="input-group flex-nowrap">
                         <div className="input-group-prepend">
-                            <span className="input-group-text" id="addon-wrapping"><i className="far fa-envelope"></i></span>
+                            <span className="input-group-text" id="addon-wrapping"><i
+                                className="far fa-envelope"></i></span>
                         </div>
                         <input type="text" className="form-control" placeholder="Email"
                                aria-label="Email" aria-describedby="addon-wrapping"
-                        value={this.state.email} onChange={this.onChange} name="email"/>
+                               value={this.state.email} onChange={this.onChange} name="email"/>
                     </div>
                     <div className="input-group flex-nowrap">
                         <div className="input-group-prepend">

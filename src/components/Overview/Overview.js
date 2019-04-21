@@ -20,7 +20,7 @@ class Overview extends Component {
                         const isNested = Array.isArray(x[0])
                         const title = String(keys[index]).capitalizeFirstLetter();
                         if (isNested)
-                            return <div className="list-group">
+                            return <div className="list-group" key={index}>
                                 <a href="#"
                                    className="list-group-item  list-group-item-action py-2">
                                     {title}
@@ -35,7 +35,7 @@ class Overview extends Component {
                                     )}
                                 </div>
                             </div>
-                        else return <div className="list-group">
+                        else return <div className="list-group" key={index}>
                             <a href="#"
                                onClick={() => this.props.editQuestion(title)}
                                className="list-group-item list-group-item-action py-2">
